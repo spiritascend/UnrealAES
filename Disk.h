@@ -1,10 +1,10 @@
 #pragma once
 
-#include <iostream>
+
 #include <vector>
-#include <numeric>
-#include <iomanip>
 #include <sstream>
+#include <thread>
+#include <future>
 
 class Disk
 {
@@ -13,8 +13,7 @@ public:
     static std::uintptr_t FindPattern(FILE* file, const char* signature);
 
 private:
-    const static int ReadInBufferSize = 4096;
-
     static std::vector<int> PatternToByteVector(const char* pattern);
+    static std::uintptr_t FindPatternInChunk(FILE* file, const std::vector<int>& patternBytes, std::uintptr_t chunkOffset, size_t chunkSize);
 };
 
