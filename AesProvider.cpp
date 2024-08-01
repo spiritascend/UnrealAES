@@ -23,7 +23,7 @@ std::string AesProvider::GetAESKey(FILE* file, long long startoffset) {
     int numberofbytesinserted = 0;
     int offset = 0;
 
-    while (numberofbytesinserted < 32) {
+    while (numberofbytesinserted < AES_BYTESIZE) {
         if (numberofbytesinserted == 8) {
             offset += 4;
         }
